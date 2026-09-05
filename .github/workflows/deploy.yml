@@ -46,23 +46,9 @@ jobs:
              with:
                   app-name: ghatoazurewebapp 
                   package: dotnetproject1/publish
-   Destroy:
-        needs: Deploy
-        runs-on: ubuntu-latest
-        steps:
-            - name: Get code
-              uses: actions/checkout@v7
-            - name: install terraform
-              uses: hashicorp/setup-terraform@v3
-            - name: azure login
-              uses: azure/login@v1
-              with:
-                  creds: ${{ secrets.AZURE_CREDENTIALS }}
-            - name: Terraform init
-              run: |
-                  cd terraform
-                  terraform init
-            - name: Terraform destroy
-              run: |
+           - name: destroy rg
+             run: |
                   cd terraform
                   terraform destroy -auto-approve
+
+   
