@@ -47,6 +47,7 @@ jobs:
                   app-name: ghatoazurewebapp 
                   package: dotnetproject1/publish
    Destroy:
+        needs: Deploy
         runs-on: ubuntu-latest
         steps:
             - name: Get code
